@@ -17,9 +17,9 @@ print("-"*30)
 #2
 def print_numb_with_match_case(x):
     match x:
-        case 1:
+        case(1):
             print(f'{x}' * 30)
-        case (0,30):
+        case((0,30)):
             print(random.randint(x[0], x[1]))
 
 print("\nZadanie 2")
@@ -29,15 +29,15 @@ print("-"*30)
 
 #3
 def print_numb_with_match_case_dictionary(x: dict):
-        match x:
-            case {"number1": 1}:
-                print(f'{x["number1"]}' * 30)
-            case {"number1": (0,30)}:
-                print(random.randint(list(x.get('number1'))[0], list(x.get('number1'))[1]))
+    match len(x):
+        case 1:
+            print(f'{x["number"]}' * 30)
+        case 2:
+            print(random.randint(x['number1'], x["number2"]))
 
 print("\nZadanie 3")
-print_numb_with_match_case_dictionary({"number1": 1})
-print_numb_with_match_case_dictionary({"number1": (0, 30)})
+print_numb_with_match_case_dictionary({"number": 1})
+print_numb_with_match_case_dictionary({"number1": 0, "number2": 30})
 print("-"*30)
 
 
