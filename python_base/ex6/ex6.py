@@ -42,7 +42,7 @@ def ex6_8():
 
 
 def ex6_9():
-    return [x for x in range(1, 51) if x > 1 and [i for i in range(2, int(i**0.5)+1) if x%i == 0]]
+    return [x for x in range(1, 51) if x != 1 and all(x % i != 0 for i in range(2, int(x ** 0.5) + 1))]
 
 
 print("Задание 1: ", ex6_1())
