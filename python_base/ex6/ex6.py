@@ -18,7 +18,7 @@ def ex6_3():
 def ex6_4():
     string_words = "Yellow Yaks like yelling and yawning and yesturday they yodled while eating yuky yams"
     string_words = string_words.split()
-    return [word for word in string_words if word[0] == 'Y' or word[0] == 'y']
+    return [word for word in string_words if word[0].lower() == 'y']
 
 
 def ex6_5():
