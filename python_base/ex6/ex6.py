@@ -7,12 +7,12 @@ def ex6_1():
 
 def ex6_2():
     numbers_7 = ex6_1()
-    return [x if x % 3 == 0 else f'{x}{x}' for x in numbers_7]
+    return [x if x % 3 == 0 else f'{x}'*2 for x in numbers_7]
 
 
 def ex6_3():
     string_with_spaces = "  hel l o      world   "
-    return list(tuple(string_with_spaces)).count(' ')
+    return len([value for value in tuple(string_with_spaces) if value == ' '])
 
 
 def ex6_4():
