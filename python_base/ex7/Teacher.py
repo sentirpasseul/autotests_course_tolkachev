@@ -14,7 +14,8 @@ class Teacher:
     def teach_student(self):
         spare_time = self.take_time(self.subject.hours_subject)
         print(self.print_free_time(), 'часов свободного времени у преподавателя')
-        print(f'Преподаватель {self.teacher_name} обучает {self.subject.name_subject} студента {self.student.student_name}'
+        print(f'Преподаватель {self.teacher_name} обучает {self.subject.name_subject} студента {self.student.student_name}')
+        print(f'Преподаватель {self.teacher_name} обучает {self.subject.name_subject} студента {self.student}'
               f'\nПредмет берет на себя {self.subject.hours_subject} часов')
         print(f'У преподавателя остается {spare_time} часов')
 
