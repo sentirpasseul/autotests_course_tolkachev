@@ -6,7 +6,7 @@ from Teacher import Teacher
 class Schedule:
     def __init__(self, student_name, teacher_name, subject_name, subject_hours):
         self.subject = Subject(subject_name, subject_hours)
-        self.student = student_name
+        self.student = Student(student_name)
         self.teacher_geography = Teacher(teacher_name=teacher_name, subject=self.subject, student=self.student)
 
 
