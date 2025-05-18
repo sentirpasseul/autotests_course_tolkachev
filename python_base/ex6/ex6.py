@@ -23,13 +23,14 @@ def ex6_4():
 
 def ex6_5():
     string1 = "hi, 3.44, 535  "
-    list_indexes = tuple((index, value) for index, value in zip(string1.split(), [x for x in range(1, 4)]))
+    #list_indexes = tuple((index, value) for index, value in zip(string1.split(), [x for x in range(1, 4)]))
+    list_indexes = [(index, value) for index, value in enumerate(string1.split())]
     return (list_indexes)
 
 
 def ex6_6():
     string_words = "In 1984 there were 13 instances of a protest with over 1000 people attending"
-    return list(word for word in tuple(string_words.split()) if word.isdigit())
+    return list(word for word in string_words.split() if word.isdigit())
 
 
 def ex6_7():
