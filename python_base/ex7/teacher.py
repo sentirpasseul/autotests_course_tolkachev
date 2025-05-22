@@ -15,3 +15,6 @@ class Teacher:
     @staticmethod
     def take_time(hours):
         return Teacher.SPARE_TIME - hours
+
+    def teach(self):
+        return f'{self.name} преподает у '

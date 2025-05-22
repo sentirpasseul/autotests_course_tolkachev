@@ -3,11 +3,10 @@ from teacher import Teacher
 
 
 class Assistant(Teacher, Student):
-    def __init__(self, name: str, student_name: str, grade: str):
-        Teacher.__init__(self, name)
-        Student.__init__(self, student_name)
+    def __init__(self, teacher_name: str, student_name: str, grade: str):
+        super().__init__(student_name)
 
-        self.teacher = name
+        self.teacher = teacher_name
         self.student = student_name
         self.grade = grade
 
