@@ -1,6 +1,9 @@
-class Student:
-    def __init__(self, student_name: str):
-        self.name = student_name
+from person import Person
 
-    def __str__(self):
-        return self.name
+
+class Student(Person):
+    def __init__(self, name: str):
+        super().__init__(name)
+
+    def study(self):
+        return f'{self.name} учится'

@@ -1,20 +1,15 @@
-from student import Student
+from person import Person
 
 
-class Teacher:
+class Teacher(Person):
     SPARE_TIME = 140
 
     def __init__(self, name):
-        # self.subject = subject
-        # self.student = student
-        self.name = name
-
-    def __str__(self):
-        return self.name
+        super().__init__(name)
 
     @staticmethod
     def take_time(hours):
         return Teacher.SPARE_TIME - hours
 
-    def teach(self):
-        return f'{self.name} преподает у '
+    def teach_student(self):
+        return f'{self.name} преподает'
