@@ -1,13 +1,11 @@
-from faker import Faker
+from faker_base import FakerBase
 
 
 class Subject:
-    MIN_HOURS = 10
-    MAX_HOURS = 80
 
-    def __init__(self, name):
+    def __init__(self, name, hours):
         self.name = name
-        self.hours = Faker().random_int(min=self.MIN_HOURS, max=self.MAX_HOURS)
+        self.hours = hours
 
     def __str__(self):
         return f'{self.name}'

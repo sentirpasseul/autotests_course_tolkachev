@@ -8,8 +8,8 @@ class Teacher(Person):
         super().__init__(name)
 
     @staticmethod
-    def take_time(hours):
+    def get_time(hours):
         return Teacher.SPARE_TIME - hours
 
-    def teach_student(self):
-        return f'{self.name} преподает'
+    def teach_student(self, student_name):
+        return f'{self.name} преподает у {student_name}'
