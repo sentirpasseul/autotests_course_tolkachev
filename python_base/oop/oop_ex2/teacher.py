@@ -8,6 +8,3 @@ class Teacher(Human):
 
     def __str__(self):
         return f'{self.name} {self.age} {self.qualification}'
-
-    def teach(self):
-        pass
