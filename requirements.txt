@@ -1,1 +1,2 @@
-Faker
+Faker==37.3.0
+tzdata==2025.2
