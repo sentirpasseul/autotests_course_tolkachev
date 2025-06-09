@@ -1,8 +1,7 @@
-import random
 from enum import StrEnum
 
 
-class ExamStatus(StrEnum):
+class ExamStatuses(StrEnum):
     PASSED = 'passed'
     CANCELED = 'canceled'
     IN_PROGRESS = 'in progress'

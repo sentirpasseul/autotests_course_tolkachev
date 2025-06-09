@@ -15,6 +15,6 @@ class Human:
     def __str__(self):
         return self.name
 
-    @staticmethod
-    def reply():
+    @classmethod
+    def reply(cls):
         return input()
