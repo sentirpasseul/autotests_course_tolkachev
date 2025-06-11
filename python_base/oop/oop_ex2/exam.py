@@ -17,16 +17,14 @@ class Exam:
     EXAM_FAILED = 'Экзамен провален.'
 
     def __init__(self, student_group, teacher, subject, difficulty):
-        self.__student_group = student_group
-        self.__teacher = teacher
-        self.__subject = subject
-        self.__ticket_generator = TicketGenerator(difficulty=difficulty, quantity=2).get_ticket()
-        self.__statuses = ExamStatuses
-        self._answers = Answers
+        self._student_group = student_group
+        self._teacher = teacher
+        self._subject = subject
+        self._ticket_generator = TicketGenerator(difficulty=difficulty, quantity=2).get_ticket()
         self.time_now = None
         self.time_end = None
         self.notify_students_about_exam()
-        self.teacher_reply = ''
+        self.teacher_reply = 'yes'
         self.student_answer = ''
         self.answer = ''
 
@@ -38,8 +36,6 @@ class Exam:
         print(self.get_text_start_exam())
         while self.time_now < self.time_end:
             self.time_now = datetime.datetime.now()
-            self.student_answer = Student.reply()
-            self.teacher_reply = self.__teacher.reply()
             self.answer = self.check_answer()
             break
 
@@ -47,10 +43,10 @@ class Exam:
         print(self.get_text_end_exam())
 
     def notify_students_about_exam(self):
-        return f'Уважаемые студенты группы {self.__student_group.number} {self.__student_group.qualification}!\n' \
-               f'{'\n'.join([student['name'] for student in self.__student_group])} \n\n' \
+        return f'Уважаемые студенты группы {self._student_group.number} {self._student_group.qualification}!\n' \
+               f'{'\n'.join([f"{student.name}" for student in self._student_group])} \n\n' \
                f'Экзамен начинается! Пожалуйста, уберите электронные приборы в рюкзак и сдайте зачетную книжку преподавателю ' \
-               f'{self.__teacher.name} \n'
+               f'{self._teacher.name} \n'
 
     def get_text_start_exam(self):
         return self.time_now.strftime(self.FORMATTED_TIME)
@@ -59,15 +55,15 @@ class Exam:
         return self.time_end.strftime(self.FORMATTED_TIME)
 
     def get_ticket(self):
-        for ticket in self.__ticket_generator:
-            print(f'Предмет: {self.__subject} \n',
-                  f'Преподаватель: {self.__teacher.name} \n',
-                  f'Группа: {self.__student_group.number} \n',
+        for ticket in self._ticket_generator:
+            print(f'Предмет: {self._subject} \n',
+                  f'Преподаватель: {self._teacher.name} \n',
+                  f'Группа: {self._student_group.number} \n',
                   f'Вопрос: {ticket.question} \n')
 
     def check_answer(self):
-        return self.__statuses.PASSED if self.teacher_reply.lower() in self._answers or self.teacher_reply.lower() == self._answers \
-            else self.__statuses.FAILED
+        return ExamStatuses.PASSED if self.teacher_reply.lower() in Answers or self.teacher_reply.lower() == Answers \
+            else ExamStatuses.FAILED
 
     def get_result_exam(self, status):
-        return self.EXAM_SUCCESS if status == 'passed' else self.EXAM_FAILED
+        return self.EXAM_SUCCESS if status == ExamStatuses.PASSED else self.EXAM_FAILED

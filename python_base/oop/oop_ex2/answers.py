@@ -1,6 +1,6 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class Answers(Enum):
+class Answers(StrEnum):
     YES = 'yes'
     NO = 'no'

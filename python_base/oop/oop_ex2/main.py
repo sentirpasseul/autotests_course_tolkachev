@@ -1,3 +1,6 @@
+import logging
+import sys
+
 from exam import Exam
 from faker import Faker
 from student_group import StudentGroup
@@ -7,7 +10,7 @@ from student import Student
 import random
 
 if __name__ == '__main__':
-    try:
+    def main():
         faker = Faker('ru_RU')
         subject = Subject(name=faker.job())
         teacher = Teacher(name=faker.name(), age=random.randint(Student.MIN_AGE, Student.MAX_AGE),
@@ -17,13 +20,16 @@ if __name__ == '__main__':
             student_group.add_student(Student(name=faker.name(),
                                               age=random.randint(Student.MIN_AGE, Student.MAX_AGE),
                                               avg_score=round(random.uniform(Subject.MIN_SCORE, Subject.MAX_SCORE),
-                                                                       2)
+                                                              2)
                                               )
                                       )
         exam = Exam(student_group=student_group, teacher=teacher, subject=subject, difficulty='medium')
         exam.start(2)
-        #print(student_group)
-        #print(student_group.kick_students())
+        print(student_group.pay_student(student_group.get_student(2)))
 
-    except Exception as e:
-        print(f'Ошибка при выполнении: {e}')
+
+    # try:
+    main()
+
+    # except Exception as e:
+    #     logging.warning(f'{e}')

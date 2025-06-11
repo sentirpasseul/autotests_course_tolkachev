@@ -1,44 +1,37 @@
 class StudentGroup:
-    MIN_SCORE_FOR_PAY = 4
+    MIN_SCORE_FOR_PAY = 4.0
 
     def __init__(self, number, qualification):
-
-        self.__students = {}
+        self._students = []
         self.number = number
         self.qualification = qualification
 
     def __iter__(self):
-        return iter(self.__students.values())
+        return iter(self._students)
 
     def __len__(self):
-        return len(self.__students)
+        return len(self._students)
 
     def __eq__(self, other):
-        if isinstance(other, StudentGroup):
-            return len(self) == len(other)
+        return len(self) == len(other) if isinstance(other, StudentGroup) else False
 
     def __str__(self):
-        return f'{self.__students}'
+        return f'{self._students}'
 
     def add_student(self, student):
-        self.__students[student.id] = {
-            'name': student.name,
-            'age': student.age,
-            'avg_score': student.avg_score
-        }
-        return self.__students
+        self._students.append(student)
+        return self._students
 
-    def kick_students(self):
-        for student in self.__students.values():
-            if student.get('avg_score') < self.MIN_SCORE_FOR_PAY:
-                print(self.get_text_kicked_students(student))
-                
+    def kick_student(self, student):
+        print(self.get_text_kicked_students(student))
+        self._students.pop(student)
+
     def get_text_kicked_students(self, student):
-        return f'Студент {student.get('name')} отчислен'
+        return f'Студент {student.name} отчислен'
 
-    def pay_students(self, student):
-        if student.exam_score >= self.MIN_SCORE_FOR_PAY:
-            return f'{student.name} получает стипендию'
+    def pay_student(self, student):
+        return f'{student.name} получает стипендию' \
+            if student.avg_score >= self.MIN_SCORE_FOR_PAY else self.kick_student(student)
 
     def get_student(self, key):
-        return self.__students.get(key)
+        return self._students.__getitem__(key)
