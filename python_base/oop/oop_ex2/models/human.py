@@ -1,6 +1,3 @@
-import random
-
-
 class Human:
     MIN_AGE = 18
     MAX_AGE = 60

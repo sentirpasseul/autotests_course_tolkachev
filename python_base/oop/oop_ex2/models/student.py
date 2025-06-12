@@ -1,4 +1,4 @@
-from human import Human
+from python_base.oop.oop_ex2.models.human import Human
 
 
 class Student(Human):
