@@ -22,7 +22,7 @@ def main():
                                   )
     exam = Exam(student_group=student_group, teacher=teacher, subject=subject, difficulty='medium')
     exam.start(2)
-    print(student_group.get_student(2))
+    print(student_group[2])
     #print(exam.pay_student(student_group.get_student(2)))
 
 

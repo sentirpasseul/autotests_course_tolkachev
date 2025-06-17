@@ -18,7 +18,6 @@ class Exam:
         self.time_start = None
         self.time_end = None
         self.notify_students_about_exam()
-        self.teacher_reply = self.TEACHER_REPLY
         self.answer = ''
 
     def start(self, seconds):
@@ -55,7 +54,7 @@ class Exam:
                   f'Вопрос: {ticket.question} \n')
 
     def check_answer(self):
-        return ExamStatuses.PASSED if self.teacher_reply.lower() in Answers else ExamStatuses.FAILED
+        return ExamStatuses.PASSED if self.TEACHER_REPLY in Answers else ExamStatuses.FAILED
 
     def kick_student(self, student):
         print(f'Студент {student.name} отчислен')

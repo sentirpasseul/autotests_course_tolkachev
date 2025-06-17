@@ -21,8 +21,8 @@ class StudentGroup:
         self._students.append(student)
         return self._students
 
-    def get_student(self, key):
-        return self._students.__getitem__(key)
+    def __getitem__(self, key):
+        return self._students[key]
 
     def remove_student(self, student):
         self._students.pop(student)
